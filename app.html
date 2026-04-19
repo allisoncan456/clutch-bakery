@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    body {
+        background-color: #fff5f8; /* Soft pink background */
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+    }
+    .calculator-container {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+        max-width: 400px;
+        width: 100%;
+    }
+    input, button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0 20px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    button {
+        background-color: #d1417a;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    button:hover {
+        background-color: #b03063;
+    }
+    label {
+        font-weight: bold;
+        color: #d1417a;
+    }
+</style>
+    <meta charset="UTF-8">
+    <title>Clutch Bakery | Pricing Calculator</title>
+    <link rel="stylesheet" href="styles.css"> </head>
+<body>
+    <div class="calculator-container">
+        <h1>Cake Pricing Calculator</h1>
+        
+        <label for="ingredients">Total Ingredient Cost ($):</label>
+        <input type="number" id="ingredients" placeholder="e.g. 15.50">
+
+        <label for="hours">Hours to Bake & Decorate:</label>
+        <input type="number" id="hours" placeholder="e.g. 3">
+
+        <label for="hourlyRate">Your Hourly Rate ($):</label>
+        <input type="number" id="hourlyRate" value="20">
+
+        <button onclick="calculatePrice()">Calculate Total Price</button>
+
+        <h2 id="totalDisplay">Final Quote: $0.00</h2>
+        
+        <p><a href="scratch.html">Back to Scratch Page</a></p>
+    </div>
+<script>
+    function calculatePrice() {
+        // 1. Get the numbers from the input boxes
+        const ingredientCost = parseFloat(document.getElementById('ingredients').value) || 0;
+        const hoursWorked = parseFloat(document.getElementById('hours').value) || 0;
+        const rate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+
+        // 2. Do the math (Labor + Ingredients)
+        const laborCost = hoursWorked * rate;
+        const total = laborCost + ingredientCost;
+
+        // 3. Display it back to the user
+        document.getElementById('totalDisplay').innerHTML = "Final Quote: $" + total.toFixed(2);
+    }
+</script>
+    </body>
+</html>
